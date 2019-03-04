@@ -1,0 +1,44 @@
+<div class="col-md-6 col-md-offset-3">
+   
+    <button (click)="openModal('custom-modal-1')">Open</button>
+    
+</div>
+
+<modal id="custom-modal-1">
+    <div class="modal">
+        <div class="modal-body">
+            <h1>A Custom Modal!</h1>
+            <div id="popup">
+  <h3>Enter number of Shelves <input type="text" [(ngModel)]="shelveNos" (change)="addShelves()" style="width: 50px;"/></h3>
+  <div class="noOfShelves" *ngIf="shelvesList.length">
+    <table>
+      <tr><th></th><th>Rows</th><th>Columns</th></tr>
+      <tr *ngFor="let item of shelvesList">
+        <td>S{{item.shelf}}</td>
+        <td><input type="text" [(ngModel)]="item.rows" style="width: 50px;"/></td>
+        <td><input type="text" [(ngModel)]="item.columns" style="width: 50px;"/></td>
+      </tr>
+    </table>
+   <button style="margin: 5px;" (click)="generateTable('custom-modal-1')">Save</button>
+  </div>
+</div> 
+           
+        </div>
+    </div>
+    <div class="modal-background"></div>
+</modal>
+<div id="generatedTable" *ngIf="shelvesList.length">
+   <h3>Generated Table</h3>
+   <table>
+     <tr *ngFor="let item of generatedList">
+       <td>S{{item.shelf}}</td>
+       <td>
+         <table>
+           <tr *ngFor="let row of range(item.rows)">
+             <td *ngFor="let col of range(item.columns)">c{{$index}}</td>
+           </tr>
+         </table>
+       </td>
+     </tr>
+   </table>
+</div>

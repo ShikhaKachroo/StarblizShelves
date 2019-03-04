@@ -1,0 +1,16 @@
+{
+  "projects": {
+    "demo": {
+      "architect": {
+        "build": {
+          "options": {
+            "styles": [
+              "app/_content/app.less",
+              "app/_content/modal.less"
+            ]
+          }
+        }
+      }
+    }
+  }
+}
